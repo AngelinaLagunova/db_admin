@@ -23,17 +23,17 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileOutputStream;
 import javax.swing.JFileChooser;
-// import com.itextpdf.text.Document;
-// import com.itextpdf.text.Font;
-// import com.itextpdf.text.Paragraph;
-// import com.itextpdf.text.pdf.BaseFont;
-// import com.itextpdf.text.pdf.PdfEncodings;
-// import com.itextpdf.text.pdf.PdfPTable;
-// import com.itextpdf.text.pdf.PdfWriter;
-// import com.itextpdf.kernel.font.PdfFont;
-// import com.itextpdf.text.Chunk;
-// import com.itextpdf.text.FontFactory;
-// import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfEncodings;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+//import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Phrase;
 
 
 
@@ -143,63 +143,63 @@ public class View extends javax.swing.JFrame {
         }
     }
     
-    // private void createPdf(JTable table)
-    // {
-    //         String path ="";
-    //         JFileChooser j=new JFileChooser();
-    //         j.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-    //         int x=j.showSaveDialog(this);
-    //         if(x==JFileChooser.APPROVE_OPTION)
-    //         {
-    //             path=j.getSelectedFile().getPath();
-    //         }
+    private void createPdf(JTable table)
+    {
+            String path ="";
+            JFileChooser j=new JFileChooser();
+            j.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            int x=j.showSaveDialog(this);
+            if(x==JFileChooser.APPROVE_OPTION)
+            {
+                path=j.getSelectedFile().getPath();
+            }
             
-    //         Document doc = new Document();
+            Document doc = new Document();
           
-            // try{
-            //     PdfWriter.getInstance(doc, new FileOutputStream(path));//+"/report.pdf"
-            //     doc.open();
+            try{
+                PdfWriter.getInstance(doc, new FileOutputStream(path));//+"/report.pdf"
+                doc.open();
                 
 
-//                float[] cellsize = {100f, 200f};
-                // PdfPTable tbl = new PdfPTable(table.getColumnCount());
+               //float[] cellsize = {100f, 200f};
+                PdfPTable tbl = new PdfPTable(table.getColumnCount());
                 
 
-                // BaseFont helvetica = BaseFont.createFont("./src/db_admin/resourses/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                // Font font = new Font(helvetica, 8, Font.NORMAL);
-                // Font namefont = new Font(helvetica, 8, Font.BOLD);
+                BaseFont helvetica = BaseFont.createFont("./src/db_admin/resourses/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                Font font = new Font(helvetica, 8, Font.NORMAL);
+                Font namefont = new Font(helvetica, 8, Font.BOLD);
 
                 
-                // for(int c=0;c<table.getColumnCount();c++){
-                //     String name = table.getColumnName(c);
-                //     Chunk chunk = new Chunk(name, namefont);
-                //     Phrase p = new Phrase(chunk);
-                //     tbl.addCell(p);
-                // }
+                for(int c=0;c<table.getColumnCount();c++){
+                    String name = table.getColumnName(c);
+                    Chunk chunk = new Chunk(name, namefont);
+                    Phrase p = new Phrase(chunk);
+                    tbl.addCell(p);
+                }
                 
-                // for(int i=0;i<table.getRowCount();i++){
+                for(int i=0;i<table.getRowCount();i++){
                     
-            //             for(int c=0;c<table.getColumnCount();c++){
-            //                 String F1 = String.valueOf(table.getValueAt(i, c));
-            //                     Chunk chunk = new Chunk(F1, font);
-            //                     Phrase p = new Phrase(chunk);
-            //                     tbl.addCell(p);
-            //             }
+                        for(int c=0;c<table.getColumnCount();c++){
+                            String F1 = String.valueOf(table.getValueAt(i, c));
+                                Chunk chunk = new Chunk(F1, font);
+                                Phrase p = new Phrase(chunk);
+                                tbl.addCell(p);
+                        }
 
-            //         }
+                    }
                
-            //     doc.add(tbl);
-            //     JOptionPane.showMessageDialog(new JFrame(), "Данные успешно сохранены", "Диалог", JOptionPane.INFORMATION_MESSAGE);
+                doc.add(tbl);
+                JOptionPane.showMessageDialog(new JFrame(), "Данные успешно сохранены", "Диалог", JOptionPane.INFORMATION_MESSAGE);
 
-            // }
-            // catch(Exception e)
-            // {
-    //             System.out.println("Error "+ e.getMessage());
-    //             JOptionPane.showMessageDialog(new JFrame(), "Что-то пошло не так", "Диалог", JOptionPane.ERROR_MESSAGE);
+            }
+            catch(Exception e)
+            {
+                System.out.println("Error "+ e.getMessage());
+                JOptionPane.showMessageDialog(new JFrame(), "Что-то пошло не так", "Диалог", JOptionPane.ERROR_MESSAGE);
 
-    //         }
-    //         doc.close();
-    // }
+            }
+            doc.close();
+    }
     
     private void updateOne(JTable table, String table_name, String id, String[] column)
     {
@@ -1856,7 +1856,7 @@ public class View extends javax.swing.JFrame {
 
     
     private void pdfButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfButton1ActionPerformed
-        // createPdf(selectTable);
+        createPdf(selectTable);
 //                createPdf(selectTable,new float[]{70f, 150f, 210f,100f,100f,100f,100f,100f,100f,100f,100f});
 
             
@@ -1868,42 +1868,42 @@ public class View extends javax.swing.JFrame {
 
     private void cityPdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityPdfButtonActionPerformed
        
-        // createPdf(cityTable);
+        createPdf(cityTable);
 //                createPdf(cityTable,new float[]{100f, 210f});
 
 
     }//GEN-LAST:event_cityPdfButtonActionPerformed
 
     private void ownerPdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerPdfButtonActionPerformed
-        // createPdf(ownerTable);
+        createPdf(ownerTable);
 //                createPdf(ownerTable,new float[]{100f, 150f, 210f,200f,100f,200f,100f});
 
 
     }//GEN-LAST:event_ownerPdfButtonActionPerformed
 
     private void type_placePdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_placePdfButtonActionPerformed
-        // createPdf(type_placeTable);
+        createPdf(type_placeTable);
 //                createPdf(type_placeTable,new float[]{100f, 210f});
 
 
     }//GEN-LAST:event_type_placePdfButtonActionPerformed
 
     private void placePdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placePdfButtonActionPerformed
-        // createPdf(placeTable);
+        createPdf(placeTable);
 //                createPdf(placeTable,new float[]{70f, 150f, 210f,100f,100f,100f,100f,100f,100f,100f,100f});
 
 
     }//GEN-LAST:event_placePdfButtonActionPerformed
 
     private void type_eventPdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_eventPdfButtonActionPerformed
-        // createPdf(type_eventTable);
+        createPdf(type_eventTable);
 //                createPdf(type_eventTable,new float[]{100f, 210f});
 
 
     }//GEN-LAST:event_type_eventPdfButtonActionPerformed
 
     private void eventPdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventPdfButtonActionPerformed
-        //  createPdf(eventTable);
+         createPdf(eventTable);
 //                  createPdf(eventTable,new float[]{200f, 250f, 100f,100f,100f});
 
 
