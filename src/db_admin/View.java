@@ -521,9 +521,9 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        ownerTable.setMinimumSize(new java.awt.Dimension(30, 64));
-        ownerTable.setPreferredSize(new java.awt.Dimension(150, 64));
-        ownerTable.setRequestFocusEnabled(false);
+        // ownerTable.setMinimumSize(new java.awt.Dimension(30, 64));
+        // ownerTable.setPreferredSize(new java.awt.Dimension(150, 64));
+        // ownerTable.setRequestFocusEnabled(false);
         jScrollPane2.setViewportView(ownerTable);
 
         ownerUpdateButton.setText("Внести изменения");
