@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileOutputStream;
@@ -56,6 +57,30 @@ public class View extends javax.swing.JFrame {
         String pass = "PrekrasnoeDaloko8519*";
         Connection con = DriverManager.getConnection(url,user,pass);
         return con;
+    }
+
+    private void setCombo(JComboBox box, String id, String table_name)
+    {
+        try{
+
+            Connection con = getConnection();
+            Statement st= con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM "+table_name);
+            while(rs.next())
+                {
+                 box.addItem(rs.getString(id));
+                    // Object[] row = new Object[columns.length];
+                    // for (int i = 0; i < columns.length; i++){
+                    //     row[i] = rs.getString(columns[i]);
+                    // }
+                }
+                con.close();
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error "+ e.getMessage());
+        }
     }
     
 
@@ -257,7 +282,18 @@ public class View extends javax.swing.JFrame {
             showTable(placeTable, "place", new String[]{"idplace","nameplace","adress","numseats","opendate","open","idowner","idcity","id_type_of_place","start","end"});
             showTable(type_eventTable, "type_of_event", new String[]{"id_type_of_event","type_name"});
             showTable(eventTable, "event", new String[]{"date","eventname","numofvisitors","idplace","id_type_of_event"});
-            
+            setCombo(ownerCityComboBox, "idcity","city");
+            setCombo(placeCityComboBox, "idcity","city");
+            setCombo(selectCityComboBox, "idcity","city");
+            setCombo(placeOwnerComboBox, "idowner","owner");
+            setCombo(placeTypeComboBox, "id_type_of_place","type_of_place");
+            setCombo(eventPlaceComboBox, "idplace","place");
+            setCombo(eventTypeComboBox, "id_type_of_event","type_of_event");
+            setCombo(selectPlaceTypeComboBox, "id_type_of_place","type_of_place");
+            setCombo(selectEventTypeComboBox, "id_type_of_event","type_of_event");
+
+
+
 
         }
         catch(Exception e)
@@ -1500,6 +1536,8 @@ public class View extends javax.swing.JFrame {
     private void cityCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityCreateButtonActionPerformed
         
         simpleAdd(cityNameTextField, cityTable, "city", "city_name",new String[]{"idcity","city_name"});
+        setCombo(ownerCityComboBox, "idcity","city");
+
 
     }//GEN-LAST:event_cityCreateButtonActionPerformed
 
@@ -1608,7 +1646,7 @@ public class View extends javax.swing.JFrame {
                         stmt.setString(3, fio); 
                         stmt.setString(4, phone); 
                         stmt.setString(5, adress); 
-                        stmt.setInt(6, 1);
+                        stmt.setInt(6, Integer.valueOf(String.valueOf(ownerCityComboBox.getSelectedItem())));
 
                         stmt.executeUpdate();
 
