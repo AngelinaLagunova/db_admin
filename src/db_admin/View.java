@@ -286,10 +286,10 @@ public class View extends javax.swing.JFrame {
             setCombo(placeCityComboBox, "idcity","city");
             setCombo(selectCityComboBox, "idcity","city");
             setCombo(placeOwnerComboBox, "idowner","owner");
-            setCombo(placeTypeComboBox, "id_type_of_place","type_of_place");
             setCombo(eventPlaceComboBox, "idplace","place");
-            setCombo(eventTypeComboBox, "id_type_of_event","type_of_event");
+            setCombo(placeTypeComboBox, "id_type_of_place","type_of_place");
             setCombo(selectPlaceTypeComboBox, "id_type_of_place","type_of_place");
+            setCombo(eventTypeComboBox, "id_type_of_event","type_of_event");
             setCombo(selectEventTypeComboBox, "id_type_of_event","type_of_event");
 
 
@@ -1213,11 +1213,11 @@ public class View extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(eventTable);
 
-        eventDetaLabel.setText("Дата*:");
+        eventDetaLabel.setText("Дата(год-месяц-день)*:");
 
         eventNameLabel.setText("Название*:");
 
-        eventVisitorsLabel.setText("Число посетивших*:");
+        eventVisitorsLabel.setText("Число посетивших:");
 
         eventPlaceLabel.setText("id места проведения*:");
 
@@ -1537,6 +1537,10 @@ public class View extends javax.swing.JFrame {
         
         simpleAdd(cityNameTextField, cityTable, "city", "city_name",new String[]{"idcity","city_name"});
         setCombo(ownerCityComboBox, "idcity","city");
+        setCombo(placeCityComboBox, "idcity","city");
+        setCombo(selectCityComboBox, "idcity","city");
+
+
 
 
     }//GEN-LAST:event_cityCreateButtonActionPerformed
@@ -1572,6 +1576,8 @@ public class View extends javax.swing.JFrame {
     private void type_placeCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_placeCreateButtonActionPerformed
         
         simpleAdd(type_placeTypeTextField, type_placeTable, "type_of_place", "type_name",new String[]{"id_type_of_place","type_name"});
+        setCombo(placeTypeComboBox, "id_type_of_place","type_of_place");
+        setCombo(selectPlaceTypeComboBox, "id_type_of_place","type_of_place");
         
     }//GEN-LAST:event_type_placeCreateButtonActionPerformed
 
@@ -1654,6 +1660,8 @@ public class View extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(new JFrame(), "Запись успешно добавлена", "Диалог", JOptionPane.INFORMATION_MESSAGE);
 
                         showTable(ownerTable, "owner", new String[]{"idowner","status","nameorg","fio","phonenum","adress","idcity"});
+                        setCombo(placeOwnerComboBox, "idowner","owner");
+
                     }
                     else
                     {
@@ -1690,6 +1698,9 @@ public class View extends javax.swing.JFrame {
     private void type_eventCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_eventCreateButtonActionPerformed
   
         simpleAdd(type_eventTextField, type_eventTable, "type_of_event", "type_name",new String[]{"id_type_of_event","type_name"});
+        setCombo(eventTypeComboBox, "id_type_of_event","type_of_event");
+        setCombo(selectEventTypeComboBox, "id_type_of_event","type_of_event");
+
         
     }//GEN-LAST:event_type_eventCreateButtonActionPerformed
 
@@ -1715,29 +1726,29 @@ public class View extends javax.swing.JFrame {
                 String start = placeStartTextField.getText();
                 String end = placeEndTextField.getText();
 
-                if(name.length()!=0 && adress.length()!=0 && opendate.length()!=0){
+                if(name.length()!=0 && adress.length()!=0 && opendate.length()!=0 && (cityYesRadioButton.isSelected() || cityNoRadioButton.isSelected())){
 
                     if(Integer.valueOf(numseats)>0){
+
                         String query = "INSERT INTO place(nameplace, adress, numseats, opendate, open, idowner, idcity, id_type_of_place, start, end) VALUES(?,?,?,?,?,?,?,?,?,?)";
                         PreparedStatement stmt = con.prepareStatement(query); 
 
                         stmt.setString(1, name);
                         stmt.setString(2, adress); 
 
-                        if (numseats.length()==0)
-                            stmt.setNull(3, java.sql.Types.INTEGER);
-                        else
-                            stmt.setInt(3, Integer.valueOf(numseats));
+                        if (numseats.length()==0) stmt.setNull(3, java.sql.Types.INTEGER);
+                        else stmt.setInt(3, Integer.valueOf(numseats));
 
                         stmt.setDate(4, java.sql.Date.valueOf(opendate)); 
 
-                        // Boolean bool;
+                        Boolean bool=false;
+                        if (cityYesRadioButton.isSelected()) bool = true;
                         // if (open.equals("да")) bool = true;
                         // else bool = false;
-                        stmt.setBoolean(5,true); 
-                        stmt.setInt(6, Integer.valueOf("1"));
-                        stmt.setInt(7, Integer.valueOf("1"));
-                        stmt.setInt(8, Integer.valueOf("1"));
+                        stmt.setBoolean(5,bool); 
+                        stmt.setInt(6, Integer.valueOf(String.valueOf(placeOwnerComboBox.getSelectedItem())));
+                        stmt.setInt(7, Integer.valueOf(String.valueOf(placeCityComboBox.getSelectedItem())));
+                        stmt.setInt(8, Integer.valueOf(String.valueOf(placeTypeComboBox.getSelectedItem())));
 
                         if (start.length()==0 && end.length()==0){
                             stmt.setNull(9, java.sql.Types.DATE); 
@@ -1753,6 +1764,8 @@ public class View extends javax.swing.JFrame {
                         con.close();
 
                         showTable(placeTable, "place", new String[]{"idplace","nameplace", "adress", "numseats", "opendate", "open", "idowner", "idcity", "id_type_of_place", "start", "end"});
+                        setCombo(eventPlaceComboBox, "idplace","place");
+
                     }
                     else
                     {
@@ -1768,7 +1781,7 @@ public class View extends javax.swing.JFrame {
             }
             catch(Exception e){
                 
-                JOptionPane.showMessageDialog(new JFrame(), "Не существующие внешние ключи", "Диалог", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "Неправильный формат даты. Доджно быть: год-месяц-день, например, 2020-2-1 или 2020-02-01 - первое февраля, 2020-го года", "Диалог", JOptionPane.ERROR_MESSAGE);
                 
                 System.out.println("Error "+ e.getMessage());
 
@@ -1803,8 +1816,8 @@ public class View extends javax.swing.JFrame {
                         else
                             stmt.setInt(3, Integer.valueOf(numofvisitors));
 
-                        stmt.setInt(4, Integer.valueOf("1"));
-                        stmt.setInt(5, Integer.valueOf("1"));
+                        stmt.setInt(4, Integer.valueOf(String.valueOf(eventPlaceComboBox.getSelectedItem())));
+                        stmt.setInt(5, Integer.valueOf(String.valueOf(eventTypeComboBox.getSelectedItem())));
 
                         stmt.executeUpdate();
 
@@ -1824,7 +1837,7 @@ public class View extends javax.swing.JFrame {
                 }
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(new JFrame(), "Несуществующие внешние ключи или повторяющийся первичный ключ", "Диалог", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "Повторяющийся первичный ключ. В одном и том же месте в одно и то же время может проходить только одно мероприятие. Исправьте дату или место проведения", "Диалог", JOptionPane.ERROR_MESSAGE);
 
                 System.out.println("Error "+ e.getMessage());
 
@@ -1948,7 +1961,7 @@ public class View extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             selectTable.setModel(model);
             
-            ResultSet rs = st.executeQuery("SELECT * FROM place WHERE idcity=1");
+            ResultSet rs = st.executeQuery("SELECT * FROM place WHERE idcity="+String.valueOf(selectCityComboBox.getSelectedItem()));
                 System.out.println("ok for " + "place");
 
                 while(rs.next())
@@ -2159,7 +2172,7 @@ public class View extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             selectTable.setModel(model);
             // String id = selectPlaceTextField.getText();
-            ResultSet rs = st.executeQuery("SELECT * FROM place WHERE id_type_of_place=1");
+            ResultSet rs = st.executeQuery("SELECT * FROM place WHERE id_type_of_place="+String.valueOf(selectPlaceTypeComboBox.getSelectedItem()));
                 System.out.println("ok for " + "place");
 
                 while(rs.next())
@@ -2192,7 +2205,7 @@ public class View extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             selectTable.setModel(model);
             // String id = selectEventTextField.getText();
-            ResultSet rs = st.executeQuery("SELECT * FROM event WHERE id_type_of_event=1");
+            ResultSet rs = st.executeQuery("SELECT * FROM event WHERE id_type_of_event="+String.valueOf(selectEventTypeComboBox.getSelectedItem()));
 
                 while(rs.next())
                 {
