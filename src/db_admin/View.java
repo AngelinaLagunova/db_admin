@@ -525,9 +525,9 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        ownerTable.setMinimumSize(new java.awt.Dimension(30, 64));
-        ownerTable.setPreferredSize(new java.awt.Dimension(150, 64));
-        ownerTable.setRequestFocusEnabled(false);
+        // ownerTable.setMinimumSize(new java.awt.Dimension(30, 64));
+        // ownerTable.setPreferredSize(new java.awt.Dimension(150, 64));
+        // ownerTable.setRequestFocusEnabled(false);
         jScrollPane2.setViewportView(ownerTable);
 
         ownerUpdateButton.setText("Внести изменения");
@@ -1581,39 +1581,45 @@ public class View extends javax.swing.JFrame {
         try{
                 Connection con = getConnection();
 
-                // String status = ownerStatusTextField.getText();
+                String status=null;
                 String nameorg = ownerNameTextField.getText();
                 String fio = ownerFioTextField.getText();
                 String phone = ownerPhoneTextField.getText();
                 String adress = ownerAdressTextField.getText();
-                // String city = ownerCityTextField.getText();
-                
-                if (phone.length()!=0 && adress.length()!=0){
+
+                if (phone.length()!=0 && adress.length()!=0 &&(ownerFisRadioButton.isSelected() || ownerYurRadioButton.isSelected())){
+
+                    if ((ownerYurRadioButton.isSelected() && fio.length()==0 && nameorg.length()!=0) || (ownerFisRadioButton.isSelected() && fio.length()!=0 && nameorg.length()==0)){
+
+                    if (ownerFisRadioButton.isSelected()){
+                        status = ownerFisRadioButton.getActionCommand();
+                        nameorg=null;
+                    }
+                    if (ownerYurRadioButton.isSelected()){
+                        status = ownerYurRadioButton.getActionCommand();
+                        fio=null;
+                    }
                     
-                    if (nameorg.length()==0 || fio.length()==0){
-
-                        if (fio.length()==0) fio=null;
-                        if (nameorg.length()==0) nameorg=null;
-
                         String query = "INSERT INTO owner(status,nameorg,fio,phonenum,adress,idcity) VALUES(?,?,?,?,?,?)";
                         PreparedStatement stmt = con.prepareStatement(query);
 
-                        stmt.setString(1, "status");
+                        stmt.setString(1, status);
                         stmt.setString(2, nameorg); 
                         stmt.setString(3, fio); 
                         stmt.setString(4, phone); 
                         stmt.setString(5, adress); 
-                        stmt.setInt(6, Integer.valueOf("1"));
+                        stmt.setInt(6, 1);
 
                         stmt.executeUpdate();
 
                         con.close();
+                        JOptionPane.showMessageDialog(new JFrame(), "Запись успешно добавлена", "Диалог", JOptionPane.INFORMATION_MESSAGE);
 
                         showTable(ownerTable, "owner", new String[]{"idowner","status","nameorg","fio","phonenum","adress","idcity"});
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(new JFrame(), "В графе статус должно быть указано физ.лицо или юр.лицо", "Диалог", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(new JFrame(), "Для физ.лица должно быть указано ФИО, для юр.лица должно быть указано название организации", "Диалог", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else
