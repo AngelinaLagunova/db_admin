@@ -276,6 +276,8 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ownerbuttonGroup = new javax.swing.ButtonGroup();
+        citybuttonGroup = new javax.swing.ButtonGroup();
         mainTabbedPane = new javax.swing.JTabbedPane();
         cityPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -298,16 +300,17 @@ public class View extends javax.swing.JFrame {
         ownerPhoneLabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        ownerStatusTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         ownerNameTextField = new javax.swing.JTextField();
         ownerFioTextField = new javax.swing.JTextField();
         ownerPhoneTextField = new javax.swing.JTextField();
         ownerAdressTextField = new javax.swing.JTextField();
-        ownerCityTextField = new javax.swing.JTextField();
         ownerCreateButton = new javax.swing.JButton();
         ownerReloadButton = new javax.swing.JButton();
         ownerPdfButton = new javax.swing.JButton();
+        ownerCityComboBox = new javax.swing.JComboBox<>();
+        ownerFisRadioButton = new javax.swing.JRadioButton();
+        ownerYurRadioButton = new javax.swing.JRadioButton();
         type_placePanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         type_placeTable = new javax.swing.JTable();
@@ -335,17 +338,18 @@ public class View extends javax.swing.JFrame {
         placeNameTextField = new javax.swing.JTextField();
         placeSeatsTextField = new javax.swing.JTextField();
         placeAdressTextField = new javax.swing.JTextField();
-        placeOpenTextField = new javax.swing.JTextField();
-        placeOwnerTextField = new javax.swing.JTextField();
         placeOpendateTextField = new javax.swing.JTextField();
         placeStartTextField = new javax.swing.JTextField();
-        placeCityTextField = new javax.swing.JTextField();
         placeEndTextField = new javax.swing.JTextField();
-        placeTypeTextField = new javax.swing.JTextField();
         placeUpdateButton = new javax.swing.JButton();
         placeDeleteButton = new javax.swing.JButton();
         placeReloadButton = new javax.swing.JButton();
         placePdfButton = new javax.swing.JButton();
+        cityYesRadioButton = new javax.swing.JRadioButton();
+        cityNoRadioButton = new javax.swing.JRadioButton();
+        placeOwnerComboBox = new javax.swing.JComboBox<>();
+        placeCityComboBox = new javax.swing.JComboBox<>();
+        placeTypeComboBox = new javax.swing.JComboBox<>();
         type_eventPanel = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         type_eventTable = new javax.swing.JTable();
@@ -367,27 +371,27 @@ public class View extends javax.swing.JFrame {
         eventDateTextField = new javax.swing.JTextField();
         eventNameTextField = new javax.swing.JTextField();
         eventVisitorsTextField = new javax.swing.JTextField();
-        eventTypeTextField = new javax.swing.JTextField();
-        eventPlaceTextField = new javax.swing.JTextField();
         eventCreateButton = new javax.swing.JButton();
         eventUpdateButton = new javax.swing.JButton();
         eventDeleteButton = new javax.swing.JButton();
         eventReloadButton = new javax.swing.JButton();
         eventPdfButton = new javax.swing.JButton();
+        eventPlaceComboBox = new javax.swing.JComboBox<>();
+        eventTypeComboBox = new javax.swing.JComboBox<>();
         selectPanel = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         selectTable = new javax.swing.JTable();
         selectButton1 = new javax.swing.JButton();
         pdfButton1 = new javax.swing.JButton();
-        selectCityTextField = new javax.swing.JTextField();
         selectButton2 = new javax.swing.JButton();
         selectButton3 = new javax.swing.JButton();
         selectButton4 = new javax.swing.JButton();
         selectButton5 = new javax.swing.JButton();
         selectPlaceButton = new javax.swing.JButton();
         selectEventButton = new javax.swing.JButton();
-        selectPlaceTextField = new javax.swing.JTextField();
-        selectEventTextField = new javax.swing.JTextField();
+        selectCityComboBox = new javax.swing.JComboBox<>();
+        selectPlaceTypeComboBox = new javax.swing.JComboBox<>();
+        selectEventTypeComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Места досуга горожан");
@@ -471,7 +475,7 @@ public class View extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(111, 111, 111)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 438, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 327, Short.MAX_VALUE)
                 .addGroup(cityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cityUpdateButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cityDeleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -505,7 +509,7 @@ public class View extends javax.swing.JFrame {
                     .addComponent(cityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(cityCreateButton)
-                .addContainerGap(4530, Short.MAX_VALUE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Города", cityPanel);
@@ -521,9 +525,9 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        // ownerTable.setMinimumSize(new java.awt.Dimension(30, 64));
-        // ownerTable.setPreferredSize(new java.awt.Dimension(150, 64));
-        // ownerTable.setRequestFocusEnabled(false);
+        ownerTable.setMinimumSize(new java.awt.Dimension(30, 64));
+        ownerTable.setPreferredSize(new java.awt.Dimension(150, 64));
+        ownerTable.setRequestFocusEnabled(false);
         jScrollPane2.setViewportView(ownerTable);
 
         ownerUpdateButton.setText("Внести изменения");
@@ -579,6 +583,28 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        ownerCityComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownerCityComboBoxActionPerformed(evt);
+            }
+        });
+
+        ownerbuttonGroup.add(ownerFisRadioButton);
+        ownerFisRadioButton.setText("физ.лицо");
+        ownerFisRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownerFisRadioButtonActionPerformed(evt);
+            }
+        });
+
+        ownerbuttonGroup.add(ownerYurRadioButton);
+        ownerYurRadioButton.setText("юр.лицо");
+        ownerYurRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownerYurRadioButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ownerPanelLayout = new javax.swing.GroupLayout(ownerPanel);
         ownerPanel.setLayout(ownerPanelLayout);
         ownerPanelLayout.setHorizontalGroup(
@@ -587,34 +613,39 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ownerPanelLayout.createSequentialGroup()
-                        .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ownerNameLabel)
-                            .addComponent(ownerFioLabel)
-                            .addComponent(ownerPhoneLabel)
-                            .addComponent(ownerStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ownerCityTextField)
-                            .addComponent(ownerStatusTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ownerFioTextField)
-                            .addComponent(ownerPhoneTextField)
-                            .addGroup(ownerPanelLayout.createSequentialGroup()
-                                .addComponent(ownerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(ownerAdressTextField, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(ownerPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
                         .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ownerUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ownerDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ownerReloadButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ownerPdfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ownerPdfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(ownerPanelLayout.createSequentialGroup()
+                        .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ownerNameLabel)
+                            .addComponent(ownerFioLabel)
+                            .addComponent(ownerPhoneLabel)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(ownerStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ownerPanelLayout.createSequentialGroup()
+                                .addComponent(ownerFisRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(ownerYurRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(ownerPanelLayout.createSequentialGroup()
+                                .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(ownerCityComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ownerFioTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ownerPhoneTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ownerPanelLayout.createSequentialGroup()
+                                        .addComponent(ownerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(ownerAdressTextField))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(ownerPanelLayout.createSequentialGroup()
                 .addComponent(ownerCreateButton)
@@ -633,10 +664,11 @@ public class View extends javax.swing.JFrame {
                         .addComponent(ownerReloadButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ownerPdfButton)))
-                .addGap(36, 36, 36)
+                .addGap(37, 37, 37)
                 .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ownerStatusLabel)
-                    .addComponent(ownerStatusTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ownerFisRadioButton)
+                    .addComponent(ownerYurRadioButton))
                 .addGap(16, 16, 16)
                 .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ownerNameLabel)
@@ -657,10 +689,10 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(ownerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(ownerCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ownerCityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ownerCreateButton)
-                .addContainerGap(4356, Short.MAX_VALUE))
+                .addContainerGap(428, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Владельцы", ownerPanel);
@@ -765,7 +797,7 @@ public class View extends javax.swing.JFrame {
                     .addComponent(type_placeTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(type_placeCreateButton)
-                .addContainerGap(4543, Short.MAX_VALUE))
+                .addContainerGap(595, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Типы мест", type_placePanel);
@@ -829,18 +861,6 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        placeOpenTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeOpenTextFieldActionPerformed(evt);
-            }
-        });
-
-        placeOwnerTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeOwnerTextFieldActionPerformed(evt);
-            }
-        });
-
         placeOpendateTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 placeOpendateTextFieldActionPerformed(evt);
@@ -853,21 +873,9 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        placeCityTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeCityTextFieldActionPerformed(evt);
-            }
-        });
-
         placeEndTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 placeEndTextFieldActionPerformed(evt);
-            }
-        });
-
-        placeTypeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeTypeTextFieldActionPerformed(evt);
             }
         });
 
@@ -899,58 +907,92 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        citybuttonGroup.add(cityYesRadioButton);
+        cityYesRadioButton.setText("да");
+
+        citybuttonGroup.add(cityNoRadioButton);
+        cityNoRadioButton.setText("нет");
+        cityNoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityNoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        placeOwnerComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeOwnerComboBoxActionPerformed(evt);
+            }
+        });
+
+        placeCityComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeCityComboBoxActionPerformed(evt);
+            }
+        });
+
+        placeTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeTypeComboBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout placePanelLayout = new javax.swing.GroupLayout(placePanel);
         placePanel.setLayout(placePanelLayout);
         placePanelLayout.setHorizontalGroup(
             placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(placePanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(108, 108, 108)
+                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(placeEndTextField)
+                    .addComponent(placeOwnerComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(placeCityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(placeTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(placeStartTextField))
+                .addGap(685, 685, 685))
+            .addGroup(placePanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(placeUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                        .addComponent(placeDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                    .addComponent(placeReloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placePdfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
+            .addGroup(placePanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(placeNameLabel)
+                    .addComponent(placeAdressLabel)
+                    .addComponent(placeSeatsLabel)
+                    .addComponent(placeOpendateLabel)
+                    .addComponent(placeOwnerLabel)
+                    .addComponent(placeCityLabel)
+                    .addComponent(placeTypeLabel)
+                    .addComponent(placeOpenLabel)
+                    .addComponent(placeEndLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(placeNameTextField)
+                    .addComponent(placeSeatsTextField)
+                    .addComponent(placeAdressTextField)
+                    .addComponent(placeOpendateTextField))
+                .addGap(685, 685, 685))
+            .addGroup(placePanelLayout.createSequentialGroup()
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(placePanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(placeUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                .addComponent(placeDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
-                            .addComponent(placeReloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(placePdfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17))
+                        .addGap(114, 114, 114)
+                        .addComponent(cityYesRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(cityNoRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(placePanelLayout.createSequentialGroup()
-                        .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(placeStartLabel)
-                            .addGroup(placePanelLayout.createSequentialGroup()
-                                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(placeNameLabel)
-                                    .addComponent(placeAdressLabel))
-                                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(placePanelLayout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addComponent(placeNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, placePanelLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(placeAdressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(placeCreateButton)
-                            .addGroup(placePanelLayout.createSequentialGroup()
-                                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(placeSeatsLabel)
-                                    .addComponent(placeOpendateLabel)
-                                    .addComponent(placeOwnerLabel)
-                                    .addComponent(placeCityLabel)
-                                    .addComponent(placeTypeLabel)
-                                    .addComponent(placeOpenLabel)
-                                    .addComponent(placeEndLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(placeOpenTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                    .addComponent(placeSeatsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                                    .addComponent(placeOpendateTextField)
-                                    .addComponent(placeTypeTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(placeCityTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(placeOwnerTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(placeStartTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(placeEndTextField))))
-                        .addContainerGap(670, Short.MAX_VALUE))))
+                        .addGap(6, 6, 6)
+                        .addComponent(placeStartLabel))
+                    .addGroup(placePanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(placeCreateButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         placePanelLayout.setVerticalGroup(
             placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -987,22 +1029,24 @@ public class View extends javax.swing.JFrame {
                     .addComponent(placeOpendateLabel)
                     .addComponent(placeOpendateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(placeOpenLabel)
-                    .addComponent(placeOpenTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cityYesRadioButton)
+                        .addComponent(cityNoRadioButton)))
                 .addGap(18, 18, 18)
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeOwnerLabel)
-                    .addComponent(placeOwnerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(placeOwnerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeCityLabel)
-                    .addComponent(placeCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(placeCityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeTypeLabel)
-                    .addComponent(placeTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(placeTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeStartLabel)
                     .addComponent(placeStartTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1012,7 +1056,7 @@ public class View extends javax.swing.JFrame {
                     .addComponent(placeEndTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addComponent(placeCreateButton)
-                .addContainerGap(4186, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Место", placePanel);
@@ -1115,7 +1159,7 @@ public class View extends javax.swing.JFrame {
                     .addComponent(type_eventTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(type_eventCreateButton)
-                .addContainerGap(4537, Short.MAX_VALUE))
+                .addContainerGap(589, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Типы мероприятий", type_eventPanel);
@@ -1190,13 +1234,25 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        eventPlaceComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventPlaceComboBoxActionPerformed(evt);
+            }
+        });
+
+        eventTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventTypeComboBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout eventPanelLayout = new javax.swing.GroupLayout(eventPanel);
         eventPanel.setLayout(eventPanelLayout);
         eventPanelLayout.setHorizontalGroup(
             eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(eventPanelLayout.createSequentialGroup()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 370, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
                 .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1215,53 +1271,53 @@ public class View extends javax.swing.JFrame {
                             .addComponent(eventTypeLabel)
                             .addComponent(eventDetaLabel))
                         .addGap(32, 32, 32)
-                        .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eventDateTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eventNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(eventVisitorsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                                .addComponent(eventPlaceTextField)
-                                .addComponent(eventTypeTextField, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(eventDateTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(eventNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(eventVisitorsTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                            .addComponent(eventPlaceComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(eventTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(eventCreateButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         eventPanelLayout.setVerticalGroup(
             eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(eventPanelLayout.createSequentialGroup()
-                .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(eventPanelLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(eventUpdateButton)
+                        .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(eventPanelLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(eventUpdateButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eventDeleteButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(eventReloadButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(eventPdfButton)))
+                        .addGap(44, 44, 44)
+                        .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(eventDetaLabel)
+                            .addComponent(eventDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(eventNameLabel)
+                            .addComponent(eventNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eventDeleteButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(eventReloadButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(eventPdfButton)))
-                .addGap(44, 44, 44)
-                .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eventDetaLabel)
-                    .addComponent(eventDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eventNameLabel)
-                    .addComponent(eventNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eventVisitorsLabel)
-                    .addComponent(eventVisitorsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eventPlaceLabel)
-                    .addComponent(eventPlaceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eventTypeLabel)
-                    .addComponent(eventTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                        .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(eventVisitorsLabel)
+                            .addComponent(eventVisitorsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(eventPlaceLabel)
+                            .addComponent(eventPlaceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(eventTypeLabel))
+                    .addComponent(eventTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(eventCreateButton)
-                .addGap(0, 4374, Short.MAX_VALUE))
+                .addGap(0, 445, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Мероприятия", eventPanel);
@@ -1290,12 +1346,6 @@ public class View extends javax.swing.JFrame {
         pdfButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pdfButton1ActionPerformed(evt);
-            }
-        });
-
-        selectCityTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectCityTextFieldActionPerformed(evt);
             }
         });
 
@@ -1341,9 +1391,21 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        selectPlaceTextField.addActionListener(new java.awt.event.ActionListener() {
+        selectCityComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectPlaceTextFieldActionPerformed(evt);
+                selectCityComboBoxActionPerformed(evt);
+            }
+        });
+
+        selectPlaceTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectPlaceTypeComboBoxActionPerformed(evt);
+            }
+        });
+
+        selectEventTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectEventTypeComboBoxActionPerformed(evt);
             }
         });
 
@@ -1355,25 +1417,27 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(selectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(selectPanelLayout.createSequentialGroup()
-                        .addComponent(selectButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(selectCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(selectButton2)
                     .addComponent(selectButton3)
                     .addComponent(selectButton4)
                     .addComponent(selectButton5)
                     .addGroup(selectPanelLayout.createSequentialGroup()
-                        .addComponent(selectEventButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectEventTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(pdfButton1))
-                    .addGroup(selectPanelLayout.createSequentialGroup()
-                        .addComponent(selectPlaceButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(selectPlaceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(330, Short.MAX_VALUE))
+                        .addGroup(selectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, selectPanelLayout.createSequentialGroup()
+                                .addComponent(selectEventButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(selectEventTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(selectPanelLayout.createSequentialGroup()
+                                .addComponent(selectPlaceButton)
+                                .addGap(55, 55, 55)
+                                .addComponent(selectPlaceTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, selectPanelLayout.createSequentialGroup()
+                                .addComponent(selectButton1)
+                                .addGap(32, 32, 32)
+                                .addComponent(selectCityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(28, 28, 28)
+                        .addComponent(pdfButton1)))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         selectPanelLayout.setVerticalGroup(
             selectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1382,7 +1446,7 @@ public class View extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(selectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectButton1)
-                    .addComponent(selectCityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectCityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addComponent(selectButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1394,7 +1458,7 @@ public class View extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(selectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectPlaceButton)
-                    .addComponent(selectPlaceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectPlaceTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(selectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(selectPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -1403,8 +1467,8 @@ public class View extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(selectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(selectEventButton)
-                            .addComponent(selectEventTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 4168, Short.MAX_VALUE))
+                            .addComponent(selectEventTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 245, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Выборка", selectPanel);
@@ -1413,7 +1477,7 @@ public class View extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mainTabbedPane)
                 .addContainerGap())
@@ -1423,7 +1487,7 @@ public class View extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mainTabbedPane)
-                .addGap(37, 37, 37))
+                .addContainerGap())
         );
 
         pack();
@@ -1474,7 +1538,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_type_placeCreateButtonActionPerformed
 
     private void placeNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeNameTextFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_placeNameTextFieldActionPerformed
 
     private void placeSeatsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeSeatsTextFieldActionPerformed
@@ -1485,14 +1549,6 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_placeAdressTextFieldActionPerformed
 
-    private void placeOpenTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOpenTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_placeOpenTextFieldActionPerformed
-
-    private void placeOwnerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOwnerTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_placeOwnerTextFieldActionPerformed
-
     private void placeOpendateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOpendateTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_placeOpendateTextFieldActionPerformed
@@ -1501,17 +1557,9 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_placeStartTextFieldActionPerformed
 
-    private void placeCityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeCityTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_placeCityTextFieldActionPerformed
-
     private void placeEndTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeEndTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_placeEndTextFieldActionPerformed
-
-    private void placeTypeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeTypeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_placeTypeTextFieldActionPerformed
 
     private void type_eventTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_eventTextFieldActionPerformed
         // TODO add your handling code here:
@@ -1533,33 +1581,40 @@ public class View extends javax.swing.JFrame {
         try{
                 Connection con = getConnection();
 
-                String status = ownerStatusTextField.getText();
+                // String status = ownerStatusTextField.getText();
                 String nameorg = ownerNameTextField.getText();
                 String fio = ownerFioTextField.getText();
                 String phone = ownerPhoneTextField.getText();
                 String adress = ownerAdressTextField.getText();
-                String city = ownerCityTextField.getText();
+                // String city = ownerCityTextField.getText();
                 
-                if (status.length()!=0 && phone.length()!=0 && adress.length()!=0 && city.length()!=0 ){
-                    if (fio.length()==0) fio=null;
-                    if (nameorg.length()==0) nameorg=null;
-
-                    String query = "INSERT INTO owner(status,nameorg,fio,phonenum,adress,idcity) VALUES(?,?,?,?,?,?)";
-                    PreparedStatement stmt = con.prepareStatement(query);
-
-                    stmt.setString(1, status);
-                    stmt.setString(2, nameorg); 
-                    stmt.setString(3, fio); 
-                    stmt.setString(4, phone); 
-                    stmt.setString(5, adress); 
-                    stmt.setInt(6, Integer.valueOf(city));
-
-                    stmt.executeUpdate();
-
-                    con.close();
-
-                    showTable(ownerTable, "owner", new String[]{"idowner","status","nameorg","fio","phonenum","adress","idcity"});
+                if (phone.length()!=0 && adress.length()!=0){
                     
+                    if (nameorg.length()==0 || fio.length()==0){
+
+                        if (fio.length()==0) fio=null;
+                        if (nameorg.length()==0) nameorg=null;
+
+                        String query = "INSERT INTO owner(status,nameorg,fio,phonenum,adress,idcity) VALUES(?,?,?,?,?,?)";
+                        PreparedStatement stmt = con.prepareStatement(query);
+
+                        stmt.setString(1, "status");
+                        stmt.setString(2, nameorg); 
+                        stmt.setString(3, fio); 
+                        stmt.setString(4, phone); 
+                        stmt.setString(5, adress); 
+                        stmt.setInt(6, Integer.valueOf("1"));
+
+                        stmt.executeUpdate();
+
+                        con.close();
+
+                        showTable(ownerTable, "owner", new String[]{"idowner","status","nameorg","fio","phonenum","adress","idcity"});
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(new JFrame(), "В графе статус должно быть указано физ.лицо или юр.лицо", "Диалог", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 else
                 {
@@ -1609,46 +1664,57 @@ public class View extends javax.swing.JFrame {
                 String numseats = placeSeatsTextField.getText();
                
                 String opendate = placeOpendateTextField.getText();
-                String open = placeOpenTextField.getText();
-                String idowner = placeOwnerTextField.getText();
-                String idcity = placeCityTextField.getText();
-                String id_type_of_place = placeTypeTextField.getText();
+                // String open = placeOpenTextField.getText();
+                // String idowner = placeOwnerTextField.getText();
+                // String idcity = placeCityTextField.getText();
+                // String id_type_of_place = placeTypeTextField.getText();
                 String start = placeStartTextField.getText();
                 String end = placeEndTextField.getText();
 
-                if(name.length()!=0 && adress.length()!=0 && opendate.length()!=0 && open.length()!=0 && idowner.length()!=0 && idcity.length()!=0 && id_type_of_place.length()!=0){
+                if(name.length()!=0 && adress.length()!=0 && opendate.length()!=0){
 
-                    String query = "INSERT INTO place(nameplace, adress, numseats, opendate, open, idowner, idcity, id_type_of_place, start, end) VALUES(?,?,?,?,?,?,?,?,?,?)";
-                    PreparedStatement stmt = con.prepareStatement(query); 
+                    if(Integer.valueOf(numseats)>0){
+                        String query = "INSERT INTO place(nameplace, adress, numseats, opendate, open, idowner, idcity, id_type_of_place, start, end) VALUES(?,?,?,?,?,?,?,?,?,?)";
+                        PreparedStatement stmt = con.prepareStatement(query); 
 
-                    stmt.setString(1, name);
-                    stmt.setString(2, adress); 
+                        stmt.setString(1, name);
+                        stmt.setString(2, adress); 
 
-                    if (numseats.length()==0)
-                        stmt.setNull(3, java.sql.Types.INTEGER);
+                        if (numseats.length()==0)
+                            stmt.setNull(3, java.sql.Types.INTEGER);
+                        else
+                            stmt.setInt(3, Integer.valueOf(numseats));
+
+                        stmt.setDate(4, java.sql.Date.valueOf(opendate)); 
+
+                        // Boolean bool;
+                        // if (open.equals("да")) bool = true;
+                        // else bool = false;
+                        stmt.setBoolean(5,true); 
+                        stmt.setInt(6, Integer.valueOf("1"));
+                        stmt.setInt(7, Integer.valueOf("1"));
+                        stmt.setInt(8, Integer.valueOf("1"));
+
+                        if (start.length()==0 && end.length()==0){
+                            stmt.setNull(9, java.sql.Types.DATE); 
+                            stmt.setNull(10, java.sql.Types.DATE); 
+                        }
+                        else{
+                            stmt.setDate(9, java.sql.Date.valueOf(start)); 
+                            stmt.setDate(10, java.sql.Date.valueOf(end)); 
+                        }
+
+                        stmt.executeUpdate();
+
+                        con.close();
+
+                        showTable(placeTable, "place", new String[]{"idplace","nameplace", "adress", "numseats", "opendate", "open", "idowner", "idcity", "id_type_of_place", "start", "end"});
+                    }
                     else
-                        stmt.setInt(3, Integer.valueOf(numseats));
+                    {
+                    JOptionPane.showMessageDialog(new JFrame(), "Количество мест должно быть больше 0, если место досуга не ограничено по количеству мест, оставьте поле пустым", "Диалог", JOptionPane.ERROR_MESSAGE);
 
-                    stmt.setDate(4, java.sql.Date.valueOf(opendate)); 
-                    stmt.setBoolean(5, Boolean.valueOf(open)); 
-                    stmt.setInt(6, Integer.valueOf(idowner));
-                    stmt.setInt(7, Integer.valueOf(idcity));
-                    stmt.setInt(8, Integer.valueOf(id_type_of_place));
-
-                    if (start.length()==0 && end.length()==0){
-                        stmt.setNull(9, java.sql.Types.DATE); 
-                        stmt.setNull(10, java.sql.Types.DATE); 
                     }
-                    else{
-                        stmt.setDate(9, java.sql.Date.valueOf(start)); 
-                        stmt.setDate(10, java.sql.Date.valueOf(end)); 
-                    }
-
-                    stmt.executeUpdate();
-
-                    con.close();
-
-                    showTable(placeTable, "place", new String[]{"idplace","nameplace", "adress", "numseats", "opendate", "open", "idowner", "idcity", "id_type_of_place", "start", "end"});
                 }
                 else
                 {
@@ -1677,29 +1743,35 @@ public class View extends javax.swing.JFrame {
                 String date = eventDateTextField.getText();
                 String eventname = eventNameTextField.getText();
                 String numofvisitors = eventVisitorsTextField.getText();    
-                String idplace = eventPlaceTextField.getText();
-                String id_type_of_event = eventTypeTextField.getText();
+                // String idplace = eventPlaceTextField.getText();
+                // String id_type_of_event = eventTypeTextField.getText();
                 
-                if(date.length()!=0 && eventname.length()!=0 && numofvisitors.length()!=0 && idplace.length()!=0 && id_type_of_event.length()!=0){
-                    String query = "INSERT INTO event(date, eventname, numofvisitors, idplace, id_type_of_event) VALUES(?,?,?,?,?)";
-                    PreparedStatement stmt = con.prepareStatement(query); 
+                if(date.length()!=0 && eventname.length()!=0 && numofvisitors.length()!=0){
+                    if (Integer.valueOf(numofvisitors)>0){
+                        String query = "INSERT INTO event(date, eventname, numofvisitors, idplace, id_type_of_event) VALUES(?,?,?,?,?)";
+                        PreparedStatement stmt = con.prepareStatement(query); 
 
-                    stmt.setDate(1, java.sql.Date.valueOf(date));
-                    stmt.setString(2, eventname); 
+                        stmt.setDate(1, java.sql.Date.valueOf(date));
+                        stmt.setString(2, eventname); 
 
-                    if (numofvisitors.length()==0)
-                        stmt.setNull(3, java.sql.Types.INTEGER);
-                    else
-                        stmt.setInt(3, Integer.valueOf(numofvisitors));
+                        if (numofvisitors.length()==0)
+                            stmt.setNull(3, java.sql.Types.INTEGER);
+                        else
+                            stmt.setInt(3, Integer.valueOf(numofvisitors));
 
-                    stmt.setInt(4, Integer.valueOf(idplace));
-                    stmt.setInt(5, Integer.valueOf(id_type_of_event));
+                        stmt.setInt(4, Integer.valueOf("1"));
+                        stmt.setInt(5, Integer.valueOf("1"));
 
-                    stmt.executeUpdate();
+                        stmt.executeUpdate();
 
-                    con.close();
+                        con.close();
 
-                    showTable(eventTable, "event", new String[]{"date","eventname", "numofvisitors", "idplace", "id_type_of_event"});
+                        showTable(eventTable, "event", new String[]{"date","eventname", "numofvisitors", "idplace", "id_type_of_event"});
+                    }
+                    else {
+                    JOptionPane.showMessageDialog(new JFrame(), "Количество поситивших должно быть больше 0, если количество поситивших неизвестно, оставьте поле пустым", "Диалог", JOptionPane.ERROR_MESSAGE);
+
+                    }
                 }
                 else
                 {
@@ -1827,12 +1899,12 @@ public class View extends javax.swing.JFrame {
             Statement st= con.createStatement();
             String[] columns = new String[]{"idplace","nameplace","adress","numseats","opendate","open","idowner","idcity","id_type_of_place","start","end"};
             
-            String idcity = selectCityTextField.getText();
+            // String idcity = selectCityTextField.getText();
             
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             selectTable.setModel(model);
             
-            ResultSet rs = st.executeQuery("SELECT * FROM place WHERE idcity="+idcity);
+            ResultSet rs = st.executeQuery("SELECT * FROM place WHERE idcity=1");
                 System.out.println("ok for " + "place");
 
                 while(rs.next())
@@ -1861,10 +1933,6 @@ public class View extends javax.swing.JFrame {
 
             
     }//GEN-LAST:event_pdfButton1ActionPerformed
-
-    private void selectCityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCityTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectCityTextFieldActionPerformed
 
     private void cityPdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityPdfButtonActionPerformed
        
@@ -1973,10 +2041,6 @@ public class View extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_selectButton3ActionPerformed
 
-    private void selectPlaceTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectPlaceTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectPlaceTextFieldActionPerformed
-
     private void selectButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButton4ActionPerformed
         // TODO add your handling code here:
         try {
@@ -2050,8 +2114,8 @@ public class View extends javax.swing.JFrame {
                         
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             selectTable.setModel(model);
-            String id = selectPlaceTextField.getText();
-            ResultSet rs = st.executeQuery("SELECT * FROM place WHERE id_type_of_place="+id);
+            // String id = selectPlaceTextField.getText();
+            ResultSet rs = st.executeQuery("SELECT * FROM place WHERE id_type_of_place=1");
                 System.out.println("ok for " + "place");
 
                 while(rs.next())
@@ -2083,8 +2147,8 @@ public class View extends javax.swing.JFrame {
             
             DefaultTableModel model = new DefaultTableModel(columns, 0);
             selectTable.setModel(model);
-            String id = selectEventTextField.getText();
-            ResultSet rs = st.executeQuery("SELECT * FROM event WHERE id_type_of_event="+id);
+            // String id = selectEventTextField.getText();
+            ResultSet rs = st.executeQuery("SELECT * FROM event WHERE id_type_of_event=1");
 
                 while(rs.next())
                 {
@@ -2104,6 +2168,54 @@ public class View extends javax.swing.JFrame {
             System.out.println("Error "+ e.getMessage());
         }
     }//GEN-LAST:event_selectEventButtonActionPerformed
+
+    private void cityNoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityNoRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cityNoRadioButtonActionPerformed
+
+    private void ownerFisRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerFisRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ownerFisRadioButtonActionPerformed
+
+    private void ownerYurRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerYurRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ownerYurRadioButtonActionPerformed
+
+    private void ownerCityComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownerCityComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ownerCityComboBoxActionPerformed
+
+    private void placeOwnerComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOwnerComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeOwnerComboBoxActionPerformed
+
+    private void placeCityComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeCityComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeCityComboBoxActionPerformed
+
+    private void placeTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeTypeComboBoxActionPerformed
+
+    private void eventPlaceComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventPlaceComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eventPlaceComboBoxActionPerformed
+
+    private void eventTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eventTypeComboBoxActionPerformed
+
+    private void selectCityComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCityComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectCityComboBoxActionPerformed
+
+    private void selectPlaceTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectPlaceTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectPlaceTypeComboBoxActionPerformed
+
+    private void selectEventTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEventTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectEventTypeComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2144,11 +2256,14 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton cityCreateButton;
     private javax.swing.JButton cityDeleteButton;
     private javax.swing.JTextField cityNameTextField;
+    private javax.swing.JRadioButton cityNoRadioButton;
     private javax.swing.JPanel cityPanel;
     private javax.swing.JButton cityPdfButton;
     private javax.swing.JButton cityReloadButton;
     private javax.swing.JTable cityTable;
     private javax.swing.JButton cityUpdateButton;
+    private javax.swing.JRadioButton cityYesRadioButton;
+    private javax.swing.ButtonGroup citybuttonGroup;
     private javax.swing.JButton eventCreateButton;
     private javax.swing.JTextField eventDateTextField;
     private javax.swing.JButton eventDeleteButton;
@@ -2157,12 +2272,12 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField eventNameTextField;
     private javax.swing.JPanel eventPanel;
     private javax.swing.JButton eventPdfButton;
+    private javax.swing.JComboBox<String> eventPlaceComboBox;
     private javax.swing.JLabel eventPlaceLabel;
-    private javax.swing.JTextField eventPlaceTextField;
     private javax.swing.JButton eventReloadButton;
     private javax.swing.JTable eventTable;
+    private javax.swing.JComboBox<String> eventTypeComboBox;
     private javax.swing.JLabel eventTypeLabel;
-    private javax.swing.JTextField eventTypeTextField;
     private javax.swing.JButton eventUpdateButton;
     private javax.swing.JLabel eventVisitorsLabel;
     private javax.swing.JTextField eventVisitorsTextField;
@@ -2179,11 +2294,12 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane mainTabbedPane;
     private javax.swing.JTextField ownerAdressTextField;
-    private javax.swing.JTextField ownerCityTextField;
+    private javax.swing.JComboBox<String> ownerCityComboBox;
     private javax.swing.JButton ownerCreateButton;
     private javax.swing.JButton ownerDeleteButton;
     private javax.swing.JLabel ownerFioLabel;
     private javax.swing.JTextField ownerFioTextField;
+    private javax.swing.JRadioButton ownerFisRadioButton;
     private javax.swing.JLabel ownerNameLabel;
     private javax.swing.JTextField ownerNameTextField;
     private javax.swing.JPanel ownerPanel;
@@ -2192,14 +2308,15 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField ownerPhoneTextField;
     private javax.swing.JButton ownerReloadButton;
     private javax.swing.JLabel ownerStatusLabel;
-    private javax.swing.JTextField ownerStatusTextField;
     private javax.swing.JTable ownerTable;
     private javax.swing.JButton ownerUpdateButton;
+    private javax.swing.JRadioButton ownerYurRadioButton;
+    private javax.swing.ButtonGroup ownerbuttonGroup;
     private javax.swing.JButton pdfButton1;
     private javax.swing.JLabel placeAdressLabel;
     private javax.swing.JTextField placeAdressTextField;
+    private javax.swing.JComboBox<String> placeCityComboBox;
     private javax.swing.JLabel placeCityLabel;
-    private javax.swing.JTextField placeCityTextField;
     private javax.swing.JButton placeCreateButton;
     private javax.swing.JButton placeDeleteButton;
     private javax.swing.JLabel placeEndLabel;
@@ -2207,11 +2324,10 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel placeNameLabel;
     private javax.swing.JTextField placeNameTextField;
     private javax.swing.JLabel placeOpenLabel;
-    private javax.swing.JTextField placeOpenTextField;
     private javax.swing.JLabel placeOpendateLabel;
     private javax.swing.JTextField placeOpendateTextField;
+    private javax.swing.JComboBox<String> placeOwnerComboBox;
     private javax.swing.JLabel placeOwnerLabel;
-    private javax.swing.JTextField placeOwnerTextField;
     private javax.swing.JPanel placePanel;
     private javax.swing.JButton placePdfButton;
     private javax.swing.JButton placeReloadButton;
@@ -2220,20 +2336,20 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel placeStartLabel;
     private javax.swing.JTextField placeStartTextField;
     private javax.swing.JTable placeTable;
+    private javax.swing.JComboBox<String> placeTypeComboBox;
     private javax.swing.JLabel placeTypeLabel;
-    private javax.swing.JTextField placeTypeTextField;
     private javax.swing.JButton placeUpdateButton;
     private javax.swing.JButton selectButton1;
     private javax.swing.JButton selectButton2;
     private javax.swing.JButton selectButton3;
     private javax.swing.JButton selectButton4;
     private javax.swing.JButton selectButton5;
-    private javax.swing.JTextField selectCityTextField;
+    private javax.swing.JComboBox<String> selectCityComboBox;
     private javax.swing.JButton selectEventButton;
-    private javax.swing.JTextField selectEventTextField;
+    private javax.swing.JComboBox<String> selectEventTypeComboBox;
     private javax.swing.JPanel selectPanel;
     private javax.swing.JButton selectPlaceButton;
-    private javax.swing.JTextField selectPlaceTextField;
+    private javax.swing.JComboBox<String> selectPlaceTypeComboBox;
     private javax.swing.JTable selectTable;
     private javax.swing.JButton type_eventCreateButton;
     private javax.swing.JButton type_eventDeleteButton;
