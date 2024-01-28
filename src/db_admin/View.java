@@ -5,17 +5,13 @@
  */
 package db_admin;
 
-//import com.mysql.cj.jdbc.Blob;
-//import java.io.BufferedOutputStream;
-import java.io.File;
+
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -26,14 +22,10 @@ import java.io.FileOutputStream;
 import javax.swing.JFileChooser;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfEncodings;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-//import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.text.Chunk;
-import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Phrase;
 
 
@@ -386,6 +378,9 @@ public class View extends javax.swing.JFrame {
         placeOwnerComboBox = new javax.swing.JComboBox<>();
         placeCityComboBox = new javax.swing.JComboBox<>();
         placeTypeComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         type_eventPanel = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         type_eventTable = new javax.swing.JTable();
@@ -414,6 +409,7 @@ public class View extends javax.swing.JFrame {
         eventPdfButton = new javax.swing.JButton();
         eventPlaceComboBox = new javax.swing.JComboBox<>();
         eventTypeComboBox = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         selectPanel = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         selectTable = new javax.swing.JTable();
@@ -431,7 +427,6 @@ public class View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Места досуга горожан");
-        setPreferredSize(new java.awt.Dimension(1000, 1000));
         setSize(new java.awt.Dimension(1500, 6000));
 
         cityTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -561,9 +556,9 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        // ownerTable.setMinimumSize(new java.awt.Dimension(30, 64));
-        // ownerTable.setPreferredSize(new java.awt.Dimension(150, 64));
-        // ownerTable.setRequestFocusEnabled(false);
+        ownerTable.setMinimumSize(new java.awt.Dimension(30, 64));
+        ownerTable.setPreferredSize(new java.awt.Dimension(150, 64));
+        ownerTable.setRequestFocusEnabled(false);
         jScrollPane2.setViewportView(ownerTable);
 
         ownerUpdateButton.setText("Внести изменения");
@@ -972,49 +967,16 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("формат даты: год-месяц-день");
+
+        jLabel3.setText("формат даты: год-месяц-день");
+
+        jLabel4.setText("формат даты: год-месяц-день");
+
         javax.swing.GroupLayout placePanelLayout = new javax.swing.GroupLayout(placePanel);
         placePanel.setLayout(placePanelLayout);
         placePanelLayout.setHorizontalGroup(
             placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(placePanelLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(placeEndTextField)
-                    .addComponent(placeOwnerComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(placeCityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(placeTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(placeStartTextField))
-                .addGap(685, 685, 685))
-            .addGroup(placePanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(placeUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                        .addComponent(placeDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
-                    .addComponent(placeReloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(placePdfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
-            .addGroup(placePanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(placeNameLabel)
-                    .addComponent(placeAdressLabel)
-                    .addComponent(placeSeatsLabel)
-                    .addComponent(placeOpendateLabel)
-                    .addComponent(placeOwnerLabel)
-                    .addComponent(placeCityLabel)
-                    .addComponent(placeTypeLabel)
-                    .addComponent(placeOpenLabel)
-                    .addComponent(placeEndLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(placeNameTextField)
-                    .addComponent(placeSeatsTextField)
-                    .addComponent(placeAdressTextField)
-                    .addComponent(placeOpendateTextField))
-                .addGap(685, 685, 685))
             .addGroup(placePanelLayout.createSequentialGroup()
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(placePanelLayout.createSequentialGroup()
@@ -1024,11 +986,56 @@ public class View extends javax.swing.JFrame {
                         .addComponent(cityNoRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(placePanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(placeStartLabel))
-                    .addGroup(placePanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addComponent(placeCreateButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(placePanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(placePanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                        .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(placeUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(placeDeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                            .addComponent(placeReloadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(placePdfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, placePanelLayout.createSequentialGroup()
+                        .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(placePanelLayout.createSequentialGroup()
+                                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(placeNameLabel)
+                                    .addComponent(placeAdressLabel)
+                                    .addComponent(placeSeatsLabel)
+                                    .addComponent(placeOpendateLabel)
+                                    .addComponent(placeOwnerLabel)
+                                    .addComponent(placeCityLabel)
+                                    .addComponent(placeTypeLabel)
+                                    .addComponent(placeOpenLabel)
+                                    .addComponent(placeEndLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(placeNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                                    .addComponent(placeSeatsTextField)
+                                    .addComponent(placeAdressTextField)
+                                    .addComponent(placeOpendateTextField))
+                                .addGap(33, 33, 33))
+                            .addGroup(placePanelLayout.createSequentialGroup()
+                                .addComponent(placeStartLabel)
+                                .addGap(13, 13, 13)
+                                .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(placeEndTextField)
+                                    .addComponent(placeCityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(placeTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(placeStartTextField)
+                                    .addComponent(placeOwnerComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(38, 38, 38)))
+                        .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(437, 437, 437))))
         );
         placePanelLayout.setVerticalGroup(
             placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1063,7 +1070,9 @@ public class View extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(placeOpendateLabel)
-                    .addComponent(placeOpendateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(placeOpendateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(placeOpenLabel)
@@ -1085,11 +1094,13 @@ public class View extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeStartLabel)
-                    .addComponent(placeStartTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(placeStartTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(placePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeEndLabel)
-                    .addComponent(placeEndTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(placeEndTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(11, 11, 11)
                 .addComponent(placeCreateButton)
                 .addContainerGap(268, Short.MAX_VALUE))
@@ -1213,11 +1224,11 @@ public class View extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(eventTable);
 
-        eventDetaLabel.setText("Дата(год-месяц-день)*:");
+        eventDetaLabel.setText("Дата*:");
 
         eventNameLabel.setText("Название*:");
 
-        eventVisitorsLabel.setText("Число посетивших:");
+        eventVisitorsLabel.setText("Число посетивших*:");
 
         eventPlaceLabel.setText("id места проведения*:");
 
@@ -1282,6 +1293,8 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("формат: год-месяц-день");
+
         javax.swing.GroupLayout eventPanelLayout = new javax.swing.GroupLayout(eventPanel);
         eventPanel.setLayout(eventPanelLayout);
         eventPanelLayout.setHorizontalGroup(
@@ -1312,9 +1325,11 @@ public class View extends javax.swing.JFrame {
                             .addComponent(eventNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                             .addComponent(eventVisitorsTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                             .addComponent(eventPlaceComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(eventTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(eventTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(eventCreateButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(413, Short.MAX_VALUE))
         );
         eventPanelLayout.setVerticalGroup(
             eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1335,7 +1350,8 @@ public class View extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(eventDetaLabel)
-                            .addComponent(eventDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(eventDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(eventPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(eventNameLabel)
@@ -1803,23 +1819,47 @@ public class View extends javax.swing.JFrame {
                 // String idplace = eventPlaceTextField.getText();
                 // String id_type_of_event = eventTypeTextField.getText();
                 
-                if(date.length()!=0 && eventname.length()!=0 && numofvisitors.length()!=0){
-                    if (Integer.valueOf(numofvisitors)>0){
+                if(date.length()!=0 && eventname.length()!=0){
+                    if ((numofvisitors.length()!=0 && Integer.valueOf(numofvisitors)>0) || numofvisitors.length()==0){
+
+                       
                         String query = "INSERT INTO event(date, eventname, numofvisitors, idplace, id_type_of_event) VALUES(?,?,?,?,?)";
                         PreparedStatement stmt = con.prepareStatement(query); 
 
                         stmt.setDate(1, java.sql.Date.valueOf(date));
                         stmt.setString(2, eventname); 
 
-                        if (numofvisitors.length()==0)
+                        if (numofvisitors.length()!=0){
+                            Statement st= con.createStatement();
+                            ResultSet rs = st.executeQuery("SELECT * FROM place where idplace="+String.valueOf(eventPlaceComboBox.getSelectedItem()));
+                            int numV = Integer.valueOf(numofvisitors);
+                            int numS=1;
+                            while(rs.next())
+                            {
+                                numS = Integer.valueOf(rs.getString("numseats"));
+                            }
+                            if (numV <= numS){
+                                stmt.setDate(1, java.sql.Date.valueOf(date));
+                                stmt.setString(2, eventname); 
+                                stmt.setInt(3, numV);
+                                stmt.setInt(4, Integer.valueOf(String.valueOf(eventPlaceComboBox.getSelectedItem())));
+                                stmt.setInt(5, Integer.valueOf(String.valueOf(eventTypeComboBox.getSelectedItem())));
+                                stmt.executeUpdate();
+
+                            }
+                            else 
+                                JOptionPane.showMessageDialog(new JFrame(), "Количество поситивших не должно превышать количество мест в данном месте досуга", "Диалог", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else{
+                            stmt.setDate(1, java.sql.Date.valueOf(date));
+                            stmt.setString(2, eventname); 
                             stmt.setNull(3, java.sql.Types.INTEGER);
-                        else
-                            stmt.setInt(3, Integer.valueOf(numofvisitors));
+                            stmt.setInt(4, Integer.valueOf(String.valueOf(eventPlaceComboBox.getSelectedItem())));
+                            stmt.setInt(5, Integer.valueOf(String.valueOf(eventTypeComboBox.getSelectedItem())));
+                            stmt.executeUpdate();
 
-                        stmt.setInt(4, Integer.valueOf(String.valueOf(eventPlaceComboBox.getSelectedItem())));
-                        stmt.setInt(5, Integer.valueOf(String.valueOf(eventTypeComboBox.getSelectedItem())));
-
-                        stmt.executeUpdate();
+                        }
+                        
 
                         con.close();
 
@@ -2339,6 +2379,10 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel eventVisitorsLabel;
     private javax.swing.JTextField eventVisitorsTextField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
